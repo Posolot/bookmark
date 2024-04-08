@@ -1,20 +1,16 @@
 #!/bin/bash
 
-# Путь к файлу, в котором будут храниться запомненные директории
 bookmark_file="$HOME/.bookmarks"
 
-# Проверяем, существует ли файл с закладками. Если нет, создаем его.
 if [ ! -e "$bookmark_file" ]; then
     touch "$bookmark_file"
 fi
 
-# Функция для добавления закладки
 add_bookmark() {
     echo "$1" >> "$bookmark_file"
     echo "Закладка добавлена: $1"
 }
 
-# Функция для перехода к закладке
 goto_bookmark() {
     if [ -s "$bookmark_file" ]; then
         select dir in $(cat "$bookmark_file"); do
@@ -29,7 +25,7 @@ goto_bookmark() {
     fi
 }
 
-# Основной цикл программы
+
 while true; do
     echo "1. Добавить закладку"
     echo "2. Перейти к закладке"
